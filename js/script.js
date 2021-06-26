@@ -130,6 +130,7 @@
   }
     
   function generateTags(){
+    
     let allTags = {};
            
   /* find all articles */
@@ -176,7 +177,7 @@
     /* END LOOP: for each tag */
       }
         
-        
+      debugger  
     /* insert HTML of all the links into the tags wrapper */
       titleList.insertAdjacentHTML('beforeend', html);
       
@@ -227,6 +228,7 @@
     const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
     const tagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
+    console.log(tagLinks);
   /* START LOOP: for each active tag link */
     for(let tagLink of tagLinks){
     /* remove class active */
@@ -247,7 +249,8 @@
 
   function addClickListenersToTags(){
     /* find all links to tags */
-    const links = document.querySelectorAll('.post-tags .list a');
+    const links = document.querySelectorAll('a[href^="#tag-"]');
+    console.log(links);
     /* START LOOP: for each link */
     for (let link of links) {
       /* add tagClickHandler as event listener for that link */
@@ -259,16 +262,23 @@
     
     
   function generateAuthors(){
+    
     let allAuthors = {};
+      
     const authorsList = document.querySelectorAll(optArticleAuthorSelector);
-      //console.log(authorsList);
+    //console.log(authorsList);
+      
+    let html = '';
+      
     for (let article of authorsList){
       const articleAuthor = article.getAttribute('data-author');
         //console.log(articleAuthor);
       const linkHTML = '<li><a data-author="' + articleAuthor + '">' + articleAuthor + '</a></li> ';
       console.log(linkHTML);
         
-      
+      html = html + linkHTML;
+        
+      authorsList.insertAdjacentHTML('beforeend', html);
     }
          
   }
