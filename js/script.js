@@ -215,7 +215,7 @@
     /* [NEW] generate code of a link and add it to allTagsHTML */
       
         //allTagsHTML += tagLinkHTML;
-        
+
         allTagsData.tags.push({
           tag: tag,
           count: allTags[tag],
@@ -309,14 +309,20 @@
     let allAuthorsHTML = '';
 
     for(let author in allAuthors){
-      const authorLinkHTML = '<li><a href="#author-' + author + '">' + author + ' </a></li>';
+      //const linkHTML = '<li><a href="#author-' + author + '">' + author + ' </a></li>';
         
-      //const  listHTMLData = {author: author};
-      //const authorLinkHTML = templates.authorList(listHTMLData);
-      console.log(authorLinkHTML);
+      const listHTMLData = {author: author};
+      const linkHTML = templates.authorList(listHTMLData);
+      
+      console.log(linkHTML);
     
-      allAuthorsHTML += authorLinkHTML;
-    }
+      //allAuthorsHTML += linkHTML;
+    
+      allAuthorsHTML.authors.push({
+          author: author,
+          count: allAuthors[author]
+        });
+      }
 
     authorList.innerHTML = allAuthorsHTML; // autorzy z prawej pod tagami
   }
