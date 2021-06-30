@@ -306,25 +306,23 @@
     const authorList = document.querySelector(optAuthorsListSelector);
     const authorParams = calculateTagsParams(allAuthors);
 
-    let allAuthorsHTML = '';
+    //let allAuthorsHTML = '';
+    const allAuthorsData = {authors: []};
 
     for(let author in allAuthors){
       //const linkHTML = '<li><a href="#author-' + author + '">' + author + ' </a></li>';
-        
-      const listHTMLData = {author: author};
-      const linkHTML = templates.authorList(listHTMLData);
-      
-      console.log(linkHTML);
-    
+ 
       //allAuthorsHTML += linkHTML;
     
-      allAuthorsHTML.authors.push({
+      allAuthorsData.authors.push({
           author: author,
-          count: allAuthors[author]
+          count: allAuthors[author],
         });
       }
+      
+      
 
-    authorList.innerHTML = allAuthorsHTML; // autorzy z prawej pod tagami
+    authorList.innerHTML = templates.authorList(allAuthorsData); // autorzy z prawej pod tagami
   }
 
   generateAuthors(); 
